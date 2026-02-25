@@ -1,0 +1,111 @@
+.players {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.players-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.players-header h2 {
+  color: #212529;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.player-form-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+  margin-bottom: 2rem;
+}
+
+.player-form-card h3 {
+  color: #212529;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.players-list {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+}
+
+.players-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.players-table th {
+  background: #f8f9fa;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #212529;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.players-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  color: #495057;
+}
+
+.players-table tr:last-child td {
+  border-bottom: none;
+}
+
+.players-table tr:hover {
+  background: #f8f9fa;
+}
+
+.player-name {
+  font-weight: 600;
+  color: #212529;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-edit {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.btn-edit:hover {
+  background: #1b5e20;
+}
+
+.btn-delete-small {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.btn-delete-small:hover {
+  background: #c82333;
+}

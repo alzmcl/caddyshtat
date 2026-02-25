@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 170" width="520" height="170">
+  <defs>
+    <radialGradient id="fairwayGrad" cx="50%" cy="60%" r="70%">
+      <stop offset="0%" style="stop-color:#2D5A1B"/>
+      <stop offset="100%" style="stop-color:#1A3A0A"/>
+    </radialGradient>
+    <linearGradient id="bgDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#111811"/>
+      <stop offset="100%" style="stop-color:#0C140C"/>
+    </linearGradient>
+    <filter id="ballglow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="ellipseglow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grassLines" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="none"/>
+      <line x1="0" y1="4" x2="8" y2="4" stroke="#3A6B22" stroke-width="3" stroke-opacity="0.35"/>
+    </pattern>
+  </defs>
+
+  <!-- Full background -->
+  <rect width="520" height="170" fill="url(#bgDark)"/>
+
+  <!-- === ICON === -->
+  <rect x="8" y="8" width="114" height="154" rx="18" fill="url(#fairwayGrad)"/>
+  <rect x="8" y="8" width="114" height="154" rx="18" fill="url(#grassLines)"/>
+  <rect x="8" y="8" width="114" height="154" rx="18" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.12"/>
+
+  <!-- Yardage lines (horizontal) -->
+  <line x1="18" y1="38"  x2="112" y2="38"  stroke="white" stroke-width="0.6" stroke-opacity="0.22"/>
+  <line x1="18" y1="68"  x2="112" y2="68"  stroke="white" stroke-width="0.6" stroke-opacity="0.22"/>
+  <line x1="18" y1="98"  x2="112" y2="98"  stroke="white" stroke-width="0.6" stroke-opacity="0.22"/>
+  <line x1="18" y1="128" x2="112" y2="128" stroke="white" stroke-width="0.6" stroke-opacity="0.22"/>
+
+  <!-- Yardage labels (right side) -->
+  <text x="111" y="36"  text-anchor="end" font-family="monospace" font-size="6.5" fill="white" opacity="0.4">170</text>
+  <text x="111" y="66"  text-anchor="end" font-family="monospace" font-size="6.5" fill="white" opacity="0.4">160</text>
+  <text x="111" y="96"  text-anchor="end" font-family="monospace" font-size="6.5" fill="white" opacity="0.4">150</text>
+  <text x="111" y="126" text-anchor="end" font-family="monospace" font-size="6.5" fill="white" opacity="0.4">140</text>
+
+  <!-- 
+    Shot dispersion ellipses — rotated ~45 degrees 
+    Center at (62, 88), tilted like real fade/draw pattern
+  -->
+
+  <!-- Outer ellipse -->
+  <ellipse cx="62" cy="88" rx="18" ry="48"
+           fill="none" stroke="white" stroke-width="1" stroke-opacity="0.28"
+           transform="rotate(-45 62 88)"/>
+
+  <!-- Mid ellipse -->
+  <ellipse cx="62" cy="88" rx="11" ry="32"
+           fill="none" stroke="white" stroke-width="1.2" stroke-opacity="0.45"
+           transform="rotate(-45 62 88)"/>
+
+  <!-- Inner tight ellipse -->
+  <ellipse cx="62" cy="88" rx="5.5" ry="17"
+           fill="white" fill-opacity="0.07"
+           stroke="white" stroke-width="1.6" stroke-opacity="0.8"
+           transform="rotate(-45 62 88)"
+           filter="url(#ellipseglow)"/>
+
+  <!-- 
+    Shot dots scattered along the 45-degree axis
+    Pattern runs from lower-left to upper-right
+  -->
+  <!-- Core cluster (near center) -->
+  <circle cx="62" cy="88"  r="3.2" fill="white" opacity="0.95" filter="url(#ballglow)"/>
+  <circle cx="67" cy="83"  r="2.8" fill="white" opacity="0.88" filter="url(#ballglow)"/>
+  <circle cx="57" cy="93"  r="2.6" fill="white" opacity="0.82" filter="url(#ballglow)"/>
+  <circle cx="70" cy="79"  r="2.4" fill="white" opacity="0.78"/>
+  <circle cx="59" cy="96"  r="2.2" fill="white" opacity="0.72"/>
+
+  <!-- Mid scatter along diagonal -->
+  <circle cx="75" cy="73"  r="2.2" fill="white" opacity="0.62"/>
+  <circle cx="52" cy="101" r="2"   fill="white" opacity="0.58"/>
+  <circle cx="79" cy="68"  r="2"   fill="white" opacity="0.55"/>
+  <circle cx="48" cy="106" r="1.8" fill="white" opacity="0.48"/>
+  <circle cx="65" cy="86"  r="1.8" fill="white" opacity="0.5"/>
+
+  <!-- Outliers -->
+  <circle cx="83" cy="62"  r="1.8" fill="white" opacity="0.35"/>
+  <circle cx="44" cy="112" r="1.6" fill="white" opacity="0.3"/>
+  <circle cx="73" cy="76"  r="1.6" fill="white" opacity="0.38"/>
+  <circle cx="54" cy="99"  r="1.6" fill="white" opacity="0.35"/>
+
+  <!-- Yellow mean crosshair -->
+  <line x1="58" y1="88" x2="66" y2="88" stroke="#FACC15" stroke-width="1.5" stroke-opacity="0.95"/>
+  <line x1="62" y1="84" x2="62" y2="92" stroke="#FACC15" stroke-width="1.5" stroke-opacity="0.95"/>
+  <circle cx="62" cy="88" r="1.8" fill="#FACC15" filter="url(#ballglow)"/>
+
+  <!-- === WORDMARK === -->
+  <text x="140" y="108"
+        font-family="'Rockwell', 'Courier New', 'Georgia', serif"
+        font-size="58"
+        font-weight="900"
+        letter-spacing="-2"
+        fill="#F5F0E8">Caddy<tspan fill="#4ADE80">Shtat</tspan></text>
+
+  <!-- Divider -->
+  <line x1="140" y1="122" x2="512" y2="122" stroke="#4ADE80" stroke-width="0.8" stroke-opacity="0.2"/>
+
+  <!-- Tagline -->
+  <text x="142" y="142"
+        font-family="'Courier New', monospace"
+        font-size="10"
+        letter-spacing="5"
+        fill="#4ADE80"
+        opacity="0.65">BE THE BALL.</text>
+
+</svg>

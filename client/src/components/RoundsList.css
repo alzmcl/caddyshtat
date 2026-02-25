@@ -1,0 +1,640 @@
+/* Main Container with Golf-themed Background */
+.rounds-list-container {
+  min-height: 80vh;
+  background: linear-gradient(135deg, #f0f9f4 0%, #ffffff 50%, #f5faf7 100%);
+  background-attachment: fixed;
+  padding: 2rem;
+  position: relative;
+  animation: fadeIn 0.6s ease-in;
+}
+
+.rounds-list-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      rgba(46, 125, 50, 0.02) 35px,
+      rgba(46, 125, 50, 0.02) 70px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rounds-list-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Stats Dashboard */
+.stats-dashboard {
+  margin-bottom: 2.5rem;
+  animation: slideDown 0.5s ease-out;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  border-color: #2e7d32;
+}
+
+.stat-card.highlight {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+}
+
+.stat-card.highlight:hover {
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* Achievement Banner */
+.achievement-banner {
+  background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
+  color: #1a1a1a;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+  animation: bounce 0.6s ease-out;
+}
+
+.achievement-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.achievement-text {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* Controls */
+.rounds-controls {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  opacity: 0.5;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.filter-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-group select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.filter-group select:hover {
+  border-color: #adb5bd;
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+/* Results Info */
+.results-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+
+.results-info h2 {
+  color: #212529;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.results-count {
+  background: #2e7d32;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Empty State */
+.rounds-list.empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  animation: float 3s ease-in-out infinite;
+}
+
+.rounds-list.empty h2 {
+  color: #212529;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.rounds-list.empty p {
+  color: #6c757d;
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+/* Rounds Grid */
+.rounds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+/* Round Card */
+.round-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 2px solid transparent;
+  animation: cardSlideIn 0.5s ease-out backwards;
+}
+
+.round-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Performance-based Card Styling */
+.round-card.under-par {
+  border-color: #4caf50;
+}
+
+.round-card.under-par:hover {
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+}
+
+.round-card.even-par {
+  border-color: #ff9800;
+}
+
+.round-card.even-par:hover {
+  box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
+}
+
+.round-card.over-par {
+  border-color: #f44336;
+}
+
+.round-card.over-par:hover {
+  box-shadow: 0 8px 20px rgba(244, 67, 54, 0.3);
+}
+
+/* Performance Badge */
+.performance-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.performance-badge.under-par {
+  background: #4caf50;
+  color: white;
+}
+
+.performance-badge.even-par {
+  background: #ff9800;
+  color: white;
+}
+
+.performance-badge.over-par {
+  background: #f44336;
+  color: white;
+}
+
+/* Round Header */
+.round-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 2px solid #e9ecef;
+  gap: 1rem;
+}
+
+.course-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.course-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.course-info h3 {
+  margin: 0;
+  color: #212529;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.tee-name {
+  display: block;
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+.round-date {
+  font-size: 0.85rem;
+  color: #6c757d;
+  background: #f8f9fa;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 500;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Round Details */
+.round-details {
+  margin-bottom: 1.25rem;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.detail-icon {
+  font-size: 1.1rem;
+  width: 1.5rem;
+  text-align: center;
+}
+
+.detail-label {
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.detail-value {
+  color: #212529;
+  font-weight: 500;
+}
+
+/* Round Score */
+.round-score {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.score-display {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.score-main,
+.score-secondary {
+  text-align: center;
+}
+
+.score-label {
+  display: block;
+  color: #6c757d;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.score-value {
+  display: block;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #2e7d32;
+  line-height: 1;
+}
+
+.score-pending {
+  text-align: center;
+  padding: 0.75rem;
+  background: #fff3cd;
+  border-radius: 6px;
+  color: #856404;
+  font-weight: 600;
+}
+
+/* Delete Button */
+.btn-delete {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(244, 67, 54, 0.1);
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.round-card:hover .btn-delete {
+  opacity: 1;
+}
+
+.btn-delete:hover {
+  background: #f44336;
+  transform: scale(1.15);
+}
+
+/* Loading States */
+.loading {
+  text-align: center;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #2e7d32;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+.loading p {
+  color: #6c757d;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .rounds-list-container {
+    padding: 1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .rounds-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    min-width: 100%;
+  }
+
+  .filter-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .filter-group select {
+    width: 100%;
+  }
+
+  .results-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .rounds-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .round-header {
+    flex-direction: column;
+  }
+
+  .round-date {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .results-info h2 {
+    font-size: 1.5rem;
+  }
+}

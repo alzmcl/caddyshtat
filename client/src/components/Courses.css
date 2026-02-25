@@ -1,0 +1,295 @@
+.courses-manager {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.courses-manager h2 {
+  color: #212529;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.courses-layout {
+  display: grid;
+  grid-template-columns: 300px 300px 1fr;
+  gap: 1.5rem;
+  min-height: 600px;
+}
+
+/* Panels */
+.courses-list-panel,
+.tees-panel,
+.holes-panel {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+}
+
+.panel-header {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-bottom: 2px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #212529;
+  font-weight: 600;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.875rem;
+}
+
+/* Course Items */
+.course-items,
+.tee-items {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.course-item,
+.tee-item {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.course-item:hover,
+.tee-item:hover {
+  background: #f8f9fa;
+}
+
+.course-item.active,
+.tee-item.active {
+  background: #e8f5e9;
+  border-left: 4px solid #2e7d32;
+}
+
+.course-name,
+.tee-name {
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 0.25rem;
+}
+
+.course-location,
+.tee-details {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+/* Holes Table */
+.holes-panel {
+  padding: 1.5rem;
+}
+
+.holes-panel h3 {
+  color: #212529;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.holes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.holes-table th {
+  background: #2e7d32;
+  color: white;
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.holes-table td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #e9ecef;
+  color: #495057;
+}
+
+.holes-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.hole-number {
+  font-weight: 600;
+  color: #212529;
+}
+
+.hole-input {
+  width: 80px;
+  padding: 0.4rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.95rem;
+  background: white;
+  color: #212529;
+}
+
+.hole-input:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.holes-table tfoot {
+  background: #f8f9fa;
+  font-weight: 700;
+}
+
+.holes-table tfoot td {
+  border-top: 3px solid #2e7d32;
+  padding: 1rem 0.75rem;
+  color: #212529;
+}
+
+@media (max-width: 1200px) {
+  .courses-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Course/Tee Actions */
+.course-item, .tee-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-content, .tee-content {
+  flex: 1;
+}
+
+.course-actions, .tee-actions {
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.course-item:hover .course-actions,
+.tee-item:hover .tee-actions {
+  opacity: 1;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.btn-icon:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.btn-icon.btn-danger:hover {
+  background: rgba(220, 53, 69, 0.1);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content h3 {
+  margin: 0 0 1.5rem 0;
+  color: #212529;
+}
+
+.modal-content .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.modal-content .form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.modal-content .form-group input,
+.modal-content .form-group textarea,
+.modal-content .form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.modal-content .form-group input:focus,
+.modal-content .form-group textarea:focus,
+.modal-content .form-group select:focus {
+  outline: none;
+  border-color: #2e7d32;
+}
+
+.modal-content .form-group textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.color-picker input[type="color"] {
+  width: 60px;
+  height: 40px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.color-picker span {
+  font-family: monospace;
+  color: #666;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: flex-end;
+}

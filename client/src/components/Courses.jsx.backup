@@ -1,0 +1,216 @@
+import { useState, useEffect } from 'react';
+import { coursesApi } from '../api/client';
+import './Courses.css';
+
+function Courses() {
+  const [courses, setCourses] = useState([]);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [tees, setTees] = useState([]);
+  const [selectedTee, setSelectedTee] = useState(null);
+  const [holes, setHoles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [showCourseForm, setShowCourseForm] = useState(false);
+  const [showTeeForm, setShowTeeForm] = useState(false);
+  const [courseForm, setCourseForm] = useState({ name: '', location: '', description: '' });
+  const [teeForm, setTeeForm] = useState({ name: '', rating: '', slope: '', color: '' });
+
+  useEffect(() => {
+    loadCourses();
+  }, []);
+
+  useEffect(() => {
+    if (selectedCourse) {
+      loadTees(selectedCourse.id);
+    }
+  }, [selectedCourse]);
+
+  useEffect(() => {
+    if (selectedTee && selectedCourse) {
+      loadHoles(selectedCourse.id, selectedTee.id);
+    }
+  }, [selectedTee, selectedCourse]);
+
+  const loadCourses = async () => {
+    try {
+      const data = await coursesApi.getAll();
+      setCourses(data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+
+  const loadTees = async (courseId) => {
+    try {
+      const data = await coursesApi.getTees(courseId);
+      setTees(data);
+      if (data.length > 0) {
+        setSelectedTee(data[0]);
+      }
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const loadHoles = async (courseId, teeId) => {
+    try {
+      const data = await coursesApi.getHoles(courseId, teeId);
+      setHoles(data);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleSelectCourse = (course) => {
+    setSelectedCourse(course);
+    setSelectedTee(null);
+    setHoles([]);
+  };
+
+  const handleUpdateHole = async (holeId, field, value) => {
+    try {
+      // Update hole via API
+      const response = await fetch(`/api/courses/${selectedCourse.id}/tees/${selectedTee.id}/holes/${holeId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ [field]: value })
+      });
+      if (!response.ok) throw new Error('Failed to update hole');
+      
+      // Reload holes
+      await loadHoles(selectedCourse.id, selectedTee.id);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  if (loading) return <div className="loading">Loading courses...</div>;
+
+  return (
+    <div className="courses-manager">
+      <h2>Course Management</h2>
+
+      <div className="courses-layout">
+        {/* Left: Course List */}
+        <div className="courses-list-panel">
+          <div className="panel-header">
+            <h3>Courses</h3>
+            <button className="btn-primary btn-sm" onClick={() => setShowCourseForm(true)}>
+              + Add Course
+            </button>
+          </div>
+          
+          <div className="course-items">
+            {courses.map(course => (
+              <div
+                key={course.id}
+                className={`course-item ${selectedCourse?.id === course.id ? 'active' : ''}`}
+                onClick={() => handleSelectCourse(course)}
+              >
+                <div className="course-name">{course.name}</div>
+                <div className="course-location">{course.location}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Middle: Tees for Selected Course */}
+        {selectedCourse && (
+          <div className="tees-panel">
+            <div className="panel-header">
+              <h3>Tees - {selectedCourse.name}</h3>
+              <button className="btn-primary btn-sm" onClick={() => setShowTeeForm(true)}>
+                + Add Tee
+              </button>
+            </div>
+            
+            <div className="tee-items">
+              {tees.map(tee => (
+                <div
+                  key={tee.id}
+                  className={`tee-item ${selectedTee?.id === tee.id ? 'active' : ''}`}
+                  onClick={() => setSelectedTee(tee)}
+                  style={{ borderLeft: `4px solid ${tee.color || '#ccc'}` }}
+                >
+                  <div className="tee-name">{tee.name}</div>
+                  <div className="tee-details">
+                    {tee.rating}/{tee.slope} - {tee.total_distance}m
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Right: Holes for Selected Tee */}
+        {selectedTee && (
+          <div className="holes-panel">
+            <h3>Holes - {selectedTee.name} Tee</h3>
+            
+            <table className="holes-table">
+              <thead>
+                <tr>
+                  <th>Hole</th>
+                  <th>Par</th>
+                  <th>Distance (m)</th>
+                  <th>Stroke Index</th>
+                </tr>
+              </thead>
+              <tbody>
+                {holes.map(hole => (
+                  <tr key={hole.id}>
+                    <td className="hole-number">{hole.hole_number}</td>
+                    <td>
+                      <input
+                        type="number"
+                        min="3"
+                        max="6"
+                        value={hole.par}
+                        onChange={(e) => handleUpdateHole(hole.id, 'par', parseInt(e.target.value))}
+                        className="hole-input"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        min="50"
+                        max="700"
+                        value={hole.distance}
+                        onChange={(e) => handleUpdateHole(hole.id, 'distance', parseInt(e.target.value))}
+                        className="hole-input"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        min="1"
+                        max="18"
+                        value={hole.stroke_index}
+                        onChange={(e) => handleUpdateHole(hole.id, 'stroke_index', parseInt(e.target.value))}
+                        className="hole-input"
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td><strong>TOTAL</strong></td>
+                  <td><strong>{holes.reduce((sum, h) => sum + h.par, 0)}</strong></td>
+                  <td><strong>{holes.reduce((sum, h) => sum + h.distance, 0)}m</strong></td>
+                  <td>-</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        )}
+      </div>
+
+      {error && <div className="error-message">{error}</div>}
+    </div>
+  );
+}
+
+export default Courses;

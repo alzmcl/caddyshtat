@@ -1,0 +1,188 @@
+.scorecard {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.scorecard-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.btn-back {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-back:hover {
+  background: #1b5e20;
+}
+
+.round-info h2 {
+  margin-bottom: 0.5rem;
+  color: #212529;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.round-info p {
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.scorecard-grid-container {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.scorecard-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.95rem;
+  min-width: 800px;
+}
+
+.scorecard-table th,
+.scorecard-table td {
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+}
+
+.scorecard-table th {
+  background: #2e7d32;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.scorecard-table th:first-child {
+  border-top-left-radius: 6px;
+}
+
+.scorecard-table th:last-child {
+  border-top-right-radius: 6px;
+}
+
+.scorecard-table td:first-child {
+  text-align: left;
+  padding-left: 1rem;
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #212529;
+}
+
+.scorecard-table .total-col {
+  background: #2e7d32;
+  font-weight: 700;
+  color: white;
+  font-size: 1.05rem;
+}
+
+.score-cell {
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+}
+
+.score-cell:hover {
+  transform: scale(1.1);
+  box-shadow: inset 0 0 0 2px #43a047;
+}
+
+.score-cell.eagle {
+  background: #1b5e20;
+  color: white;
+}
+
+.score-cell.birdie {
+  background: #43a047;
+  color: white;
+}
+
+.score-cell.par {
+  background: #fff;
+  color: #212529;
+}
+
+.score-cell.bogey {
+  background: #ff9800;
+  color: white;
+}
+
+.score-cell.double-bogey {
+  background: #d32f2f;
+  color: white;
+}
+
+.small-text {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.stats-summary {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  border-radius: 6px;
+  min-width: 120px;
+  border: 1px solid #e9ecef;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

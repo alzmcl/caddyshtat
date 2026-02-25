@@ -1,0 +1,176 @@
+.tiger5-display {
+  margin-top: 3rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem;
+}
+
+.tiger5-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.tiger5-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: #212529;
+  font-size: 1.5rem;
+}
+
+.tiger5-subtitle {
+  margin: 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.tiger5-content {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Summary Card */
+.tiger5-summary-card {
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 2rem;
+}
+
+.tiger5-excellent {
+  background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+  color: white;
+}
+
+.tiger5-good {
+  background: linear-gradient(135deg, #f57c00 0%, #ff9800 100%);
+  color: white;
+}
+
+.tiger5-needswork {
+  background: linear-gradient(135deg, #c62828 0%, #d32f2f 100%);
+  color: white;
+}
+
+.tiger5-score-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.tiger5-score-value {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.tiger5-score-detail {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.tiger5-grade {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+/* Table */
+.tiger5-table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.tiger5-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.tiger5-table th {
+  background: #495057;
+  color: white;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1px solid #343a40;
+}
+
+.tiger5-table td {
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid #e9ecef;
+  color: #495057;
+}
+
+.tiger5-rule-col {
+  min-width: 150px;
+  text-align: left !important;
+}
+
+.tiger5-hole-col {
+  min-width: 35px;
+  font-size: 0.8rem;
+}
+
+.tiger5-total-col {
+  min-width: 60px;
+  background: #343a40;
+}
+
+.tiger5-rule-name {
+  text-align: left !important;
+  font-weight: 600;
+  color: #212529;
+  padding-left: 1rem !important;
+  background: #f8f9fa;
+}
+
+.tiger5-violation-cell {
+  font-size: 1.2rem;
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+.tiger5-rule-total {
+  font-weight: 700;
+  background: #f8f9fa;
+  color: #212529;
+}
+
+.tiger5-totals-row {
+  background: #343a40 !important;
+  color: white !important;
+}
+
+.tiger5-totals-row td {
+  padding: 1rem 0.5rem;
+  border-color: #495057 !important;
+  color: white !important;
+}
+
+.tiger5-grand-total {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1200px) {
+  .tiger5-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .tiger5-summary-card {
+    position: static;
+    margin-bottom: 2rem;
+  }
+}
